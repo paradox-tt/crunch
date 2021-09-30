@@ -80,7 +80,7 @@ Create a seed private file `.private.seed` inside `crunch-bot` folder and write 
 #!/bin/bash
 # create a file with a file editor (Vim in this case) and write the private seed phrase 
 # of the account responsible to sign the extrinsic payout call
-$ vi ~/crunch-bot/.private.seed
+vi ~/crunch-bot/.private.seed
 # when ready write and quit (:wq!)
 ```
 
@@ -124,9 +124,8 @@ Join and read the messages history of all the Public Rooms for which **Crunch Bo
 If you have been doing `crunch` configuration as described in previous steps (assuming `.env` and `.private.seed` defined inside `~/crunch-bot` folder), run `crunch` when `~/crunch-bot` folder is your current working directory. Otherwise you will have to specify `.env` and `.private.seed` custom paths.
 
 ```bash
-#!/bin/bash
 # set ~/crunch-bot your current working directory
-$ cd ~/crunch-bot
+cd ~/crunch-bot
 ```
 
 By default `crunch` tries to connect to your local substrate node on the default websocket port `ws://127.0.0.1:9944`. This can be changed by typing one of polkadot main chains - westend, kusama or polkadot. Or by changing the substrate websocket url with the option `--substrate-ws-url`.
@@ -138,21 +137,20 @@ Essentially `crunch` motto is enjoy **Crunch Bot** while `crunch flakes` :)
 If all has been set as previously described `crunch` should be ready with just the following options:
 
 ```bash
-#!/bin/bash
 # and than simple run crunch with default options to connect to your local node
-$ crunch flakes
+crunch flakes
 # or specify directly which network crunch will try to connect
-$ crunch westend flakes
+crunch westend flakes
 # or for Kusama network and claiming rewards every 6 hours
-$ crunch kusama flakes turbo
+crunch kusama flakes turbo
 # or for Polkadot network and claiming rewards once a day
-$ crunch polkadot flakes daily
+crunch polkadot flakes daily
 # or run crunch a bit more boring for Westend network
-$ crunch westend rewards turbo
+crunch westend rewards turbo
 # or for Kusama network and claiming rewards once a day
-$ crunch kusama rewards daily
+crunch kusama rewards daily
 # or for Polkadot network and claiming rewards once a day
-$ crunch polkadot rewards daily
+crunch polkadot rewards daily
 ```
 
 If you need more customization run help to check all sub commands, flags and options.
@@ -160,15 +158,13 @@ If you need more customization run help to check all sub commands, flags and opt
 Note: All flags and options are also available through environment variables if defined in `.env` configuration file. You can choose which way you want to configure `crunch`. Take in consideration that if the same variable is defined on both sides e.g. defined in `.env` and through CLI flag/option, `crunch` will take the value defined by CLI.
 
 ```bash
-#!/bin/bash
 # if you need a custom crunch check all the options and flags available
-$ crunch help
+crunch help
 ```
 
 ```bash
-#!/bin/bash
 # or help for any subcommand like
-$ crunch rewards --help
+crunch rewards --help
 
 USAGE:
     crunch rewards [FLAGS] [OPTIONS] [MODE]
@@ -223,13 +219,12 @@ Also if you just want to know for the stash accounts defined in the confguration
 Note: This option only logs information on the terminal
 
 ```bash
-#!/bin/bash
 # run crunch for Westend network and claiming rewards every 6 hours
-$ crunch westend view
+crunch westend view
 # or for Kusama network
-$ crunch kusama view
+crunch kusama view
 # or for Polkadot network
-$ crunch polkadot view
+crunch polkadot view
 ```
 
 Note: You can run `crunch` inside a tmux session and leave it, or using something like `systemd` to run `crunch` on server restarts for example. By default `crunch` will wake up every X hours to claim rewards if there are any to claim.
@@ -263,29 +258,25 @@ sudo apt install build-essential git clang libclang-dev pkg-config libssl-dev
 Build `crunch` by cloning this repository
 
 ```bash
-#!/bin/bash
-$ git clone http://github.com/turboflakes/crunch
+git clone http://github.com/turboflakes/crunch
 ```
 
 Compile `crunch` package with Cargo
 
 ```bash
-#!/bin/bash
-$ cargo build
+cargo build --release
 ```
 
 And then run it
 
 ```bash
-#!/bin/bash
-$ ./target/debug/crunch westend flakes daily
+./target/release/crunch westend flakes daily
 ```
 
 Otherwise, recompile the code on changes and run the binary
 
 ```bash
-#!/bin/bash
-$ cargo watch -x 'run --bin crunch'
+cargo watch -x 'run --bin crunch'
 ```
 
 ## Inspiration
